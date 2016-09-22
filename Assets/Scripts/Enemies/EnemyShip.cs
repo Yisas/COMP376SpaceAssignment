@@ -5,6 +5,8 @@ public class EnemyShip : MonoBehaviour {
 
     public float speed;
 
+	public GameObject deathEffect;
+
     private Rigidbody2D rb;
     private EnemyFormation enemyFormation;
 
@@ -26,6 +28,7 @@ public class EnemyShip : MonoBehaviour {
     // To be called when hit by an enemy bullet
     public void Hit()
     {
+		Instantiate (deathEffect, transform.position, transform.rotation);
         enemyFormation.EnemyDied();
         Destroy(gameObject);
     }
