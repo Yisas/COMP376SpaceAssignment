@@ -32,4 +32,17 @@ public class EnemyShip : MonoBehaviour {
         enemyFormation.EnemyDied();
         Destroy(gameObject);
     }
+
+	// To be called when the enemy hits the player
+	void HitPlayer(){
+		Instantiate (deathEffect, transform.position, transform.rotation);
+		Destroy(gameObject);
+	}
+
+	void OnTriggerEnter2D(Collider2D col){
+		if (col.transform.tag == "Player") {
+			col.gameObject.GetComponent<PlayerHealth> ().TakeDamage ();
+			HitPlayer ();
+		}
+	}
 }
