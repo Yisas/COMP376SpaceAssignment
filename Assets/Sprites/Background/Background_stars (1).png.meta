@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 7be10879b3e25f244a1c66c5543d2b18
-timeCreated: 1474499724
+guid: 2f66f5578450ba144a91c2d1d4175c9c
+timeCreated: 1474505906
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Sprite_FX_Stars_0020 (2) (2)_0
-    21300002: Sprite_FX_Stars_0020 (2) (2)_1
-    21300004: Sprite_FX_Stars_0020 (2) (2)_2
-    21300006: Sprite_FX_Stars_0020 (2) (2)_3
-    21300008: Sprite_FX_Stars_0020 (2) (2)_4
-    21300010: Sprite_FX_Stars_0020 (2) (2)_5
-    21300012: Sprite_FX_Stars_0020 (2) (2)_6
-    21300014: Sprite_FX_Stars_0020 (2) (2)_7
-    21300016: Sprite_FX_Stars_0020 (2) (2)_8
-    21300018: Sprite_FX_Stars_0020 (2) (2)_9
+    21300000: Background_stars (1)_0
+    21300002: Background_stars (1)_1
+    21300004: Background_stars (1)_2
+    21300006: Background_stars (1)_3
+    21300008: Background_stars (1)_4
+    21300010: Background_stars (1)_5
+    21300012: Background_stars (1)_6
+    21300014: Background_stars (1)_7
+    21300016: Background_stars (1)_8
+    21300018: Background_stars (1)_9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -63,11 +63,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite_FX_Stars_0020 (2) (2)_0
+      name: Background_stars (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 17
+        x: 32
+        y: 451
         width: 29
         height: 29
       alignment: 0
@@ -76,11 +76,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Sprite_FX_Stars_0020 (2) (2)_1
+      name: Background_stars (1)_1
       rect:
         serializedVersion: 2
-        x: 33
-        y: 25
+        x: 39
+        y: 411
         width: 15
         height: 15
       alignment: 0
@@ -89,11 +89,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Sprite_FX_Stars_0020 (2) (2)_2
+      name: Background_stars (1)_2
       rect:
         serializedVersion: 2
-        x: 52
-        y: 29
+        x: 44
+        y: 369
         width: 6
         height: 6
       alignment: 0
@@ -102,11 +102,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Sprite_FX_Stars_0020 (2) (2)_3
+      name: Background_stars (1)_3
       rect:
         serializedVersion: 2
-        x: 63
-        y: 28
+        x: 42
+        y: 321
         width: 9
         height: 9
       alignment: 0
@@ -115,11 +115,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Sprite_FX_Stars_0020 (2) (2)_4
+      name: Background_stars (1)_4
       rect:
         serializedVersion: 2
-        x: 76
-        y: 26
+        x: 40
+        y: 273
         width: 13
         height: 13
       alignment: 0
@@ -128,11 +128,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Sprite_FX_Stars_0020 (2) (2)_5
+      name: Background_stars (1)_5
       rect:
         serializedVersion: 2
-        x: 93
-        y: 25
+        x: 39
+        y: 225
         width: 15
         height: 15
       alignment: 0
@@ -141,11 +141,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Sprite_FX_Stars_0020 (2) (2)_6
+      name: Background_stars (1)_6
       rect:
         serializedVersion: 2
-        x: 112
-        y: 19
+        x: 32
+        y: 172
         width: 29
         height: 29
       alignment: 0
@@ -154,11 +154,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Sprite_FX_Stars_0020 (2) (2)_7
+      name: Background_stars (1)_7
       rect:
         serializedVersion: 2
-        x: 144
-        y: 21
+        x: 33
+        y: 126
         width: 27
         height: 27
       alignment: 0
@@ -167,11 +167,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Sprite_FX_Stars_0020 (2) (2)_8
+      name: Background_stars (1)_8
       rect:
         serializedVersion: 2
-        x: 175
-        y: 21
+        x: 33
+        y: 80
         width: 27
         height: 27
       alignment: 0
@@ -180,11 +180,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Sprite_FX_Stars_0020 (2) (2)_9
+      name: Background_stars (1)_9
       rect:
         serializedVersion: 2
-        x: 206
-        y: 30
+        x: 42
+        y: 42
         width: 9
         height: 9
       alignment: 0
