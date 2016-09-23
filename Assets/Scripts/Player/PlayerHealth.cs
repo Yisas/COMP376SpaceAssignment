@@ -24,6 +24,9 @@ public class PlayerHealth : MonoBehaviour {
 
         powerups = Mathf.Clamp(powerups, -1, maxNumberOfPickups);
 
+        playerController.numberOfShots--;
+        playerController.numberOfShots = Mathf.Clamp(playerController.numberOfShots, 1, maxNumberOfPickups + 1);
+
         if (powerups < 0)
             Die();
 	}
