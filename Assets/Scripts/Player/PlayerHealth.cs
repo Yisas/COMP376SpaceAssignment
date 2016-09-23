@@ -49,6 +49,16 @@ public class PlayerHealth : MonoBehaviour {
 
     void Die()
     {
+        Rigidbody2D[] rbs = GameObject.FindObjectsOfType<Rigidbody2D>();
+        EnemySpawner[] espwnrs = GameObject.FindObjectsOfType<EnemySpawner>();
 
+        foreach (Rigidbody2D rb in rbs)
+            rb.velocity = new Vector2(0, 0);
+
+        foreach (EnemySpawner es in espwnrs)
+            es.enabled = false;
+
+        GetComponent<Animator>().SetTrigger("death");
+        StartCoroutine(AuxFunctions.ShakeCamera(1,3));
     }
 }

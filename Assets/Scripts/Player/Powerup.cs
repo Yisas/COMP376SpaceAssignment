@@ -7,6 +7,10 @@ public class Powerup : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        if (GameObject.FindObjectOfType<PlayerHealth>().powerups >= GameObject.FindObjectOfType<PlayerHealth>().maxNumberOfPickups)
+            Destroy(gameObject);
+
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed);
 	}
 	
