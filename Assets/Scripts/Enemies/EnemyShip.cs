@@ -39,7 +39,7 @@ public class EnemyShip : MonoBehaviour {
 	}
 
 	void OnDestroy(){
-		enemyFormation.EnemyDied ();
+		enemyFormation.EnemyDied (transform.position);
 	}
 
 	void OnTriggerEnter2D(Collider2D col){

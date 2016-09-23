@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyFormation : MonoBehaviour {
 
+	public GameObject powerupDrop;
+
     private ArrayList enemies = new ArrayList();
 
     private int numOfEnemies;
@@ -20,27 +22,26 @@ public class EnemyFormation : MonoBehaviour {
 	}
 
     // To be called by the enemy when it has died
-    public void EnemyDied()
+	public void EnemyDied(Vector3 enemyPosition)
     {
         numOfEnemies--;
+		if (numOfEnemies <= 0) {
+			DropPowerUp (enemyPosition);
+			Destroy (gameObject);
+		}
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if (numOfEnemies <= 0) {
-			DropPowerUp ();
-			Destroy (gameObject);
-		}
-
     }
 
-    void DropPowerUp()
+	void DropPowerUp(Vector3 enemyPosition)
     {
         // TODO
         if (!powerupDropped)
         {
             powerupDropped = true;
-            Debug.Log("drop power up");
+			Instantiate (powerupDrop, enemyPosition, powerupDrop.transform.rotation);
         }
     }
 }
