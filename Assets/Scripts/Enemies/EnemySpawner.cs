@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
-	public int maxNumberOfEnemies;
 	public float spawnTime;
 	// The amount of time between each spawn.
 	public float spawnDelay;
@@ -12,20 +11,22 @@ public class EnemySpawner : MonoBehaviour
 	public GameObject[] enemies;
 	// Array of enemy prefabs.
 
-	private Transform leftmostSpawnEdge;
-	// Smallest value of x in world coordinates the delivery can happen at.
-	private Transform rightmostSpawnEdge;
-	// Largest value of x in world coordinates the delivery can happen at.
+	private Transform leftmostSpawnEdge;                    	// Smallest value of x in world coordinates the delivery can happen at.
+	private Transform rightmostSpawnEdge;                   	// Largest value of x in world coordinates the delivery can happen at.
+    private GameController gameController;
 
 	private float spawnTimer;
 	private Vector3 nextSpawnPosition;
 	private int nextEnemyIndex;
-	private int numberOfEnemies = 0;
 
 	void Awake ()
 	{
+        // Setup references
 		leftmostSpawnEdge = transform.FindChild ("leftmostSpawnEdge");
 		rightmostSpawnEdge = transform.FindChild ("rightmostSpawnEdge");
+        gameController = GameObject.FindObjectOfType<GameController>();
+
+        // Setup variables
 		spawnTimer = spawnTime;
 	}
 
@@ -37,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
 		// Else start spawning.
 		else {
 			// Check for spawnTimer
-			if (spawnTimer <= 0 && numberOfEnemies < maxNumberOfEnemies) {
+			if (spawnTimer <= 0 && gameController.numberOfEnemyFormations < gameController.maxNumberOfEnemyFormations) {
 				// Chose enemy type to spawn
 				nextEnemyIndex = Random.Range (0, enemies.Length);
 
@@ -46,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
 				// Final instantiation
 				GameObject enemy = (GameObject)Instantiate (enemies [nextEnemyIndex], nextSpawnPosition, transform.rotation);
 
-				numberOfEnemies++;
+				gameController.numberOfEnemyFormations++;
 
 				// Reset timer and flags
 				spawnTimer = spawnTime;

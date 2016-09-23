@@ -55,4 +55,9 @@ public class EnemyFormation : MonoBehaviour {
 			Instantiate (powerupDrop, enemyPosition, powerupDrop.transform.rotation);
         }
     }
+
+    void OnDestroy()
+    {
+        GameObject.FindObjectOfType<GameController>().numberOfEnemyFormations--;
+    }
 }
