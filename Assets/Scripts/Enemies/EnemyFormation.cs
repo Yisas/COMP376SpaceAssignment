@@ -27,8 +27,10 @@ public class EnemyFormation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (numOfEnemies <= 0)
-            DropPowerUp();
+		if (numOfEnemies <= 0) {
+			DropPowerUp ();
+			Destroy (gameObject);
+		}
 
     }
 

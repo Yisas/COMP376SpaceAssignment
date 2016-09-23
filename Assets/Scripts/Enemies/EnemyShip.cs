@@ -29,7 +29,6 @@ public class EnemyShip : MonoBehaviour {
     public void Hit()
     {
 		Instantiate (deathEffect, transform.position, transform.rotation);
-        enemyFormation.EnemyDied();
         Destroy(gameObject);
     }
 
@@ -37,6 +36,10 @@ public class EnemyShip : MonoBehaviour {
 	void HitPlayer(){
 		Instantiate (deathEffect, transform.position, transform.rotation);
 		Destroy(gameObject);
+	}
+
+	void OnDestroy(){
+		enemyFormation.EnemyDied ();
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
