@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour {
     {
         if(col.transform.tag == "Enemy")
         {
-            col.gameObject.GetComponentInParent<EnemyShip>().Hit();
+            col.gameObject.GetComponentInParent<EnemyShip>().HitByPlayer();
         }
     }
 }

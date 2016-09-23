@@ -29,4 +29,17 @@ public class AuxFunctions : MonoBehaviour {
 		}
 		return goList.ToArray();
 	}
+
+    public static Vector2 RotateVector2d(Vector2 vector, float degrees)
+    {
+
+        float rads = Mathf.Deg2Rad * degrees;
+
+        Vector2 returnVector = new Vector2();
+
+        returnVector.x = vector.x * Mathf.Cos(rads) - vector.y * Mathf.Sin(rads);
+        returnVector.y = vector.x * Mathf.Sin(rads) + vector.y * Mathf.Cos(rads);
+
+        return returnVector;
+    }
 }

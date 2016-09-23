@@ -10,6 +10,8 @@ public class EnemyShip : MonoBehaviour {
     private Rigidbody2D rb;
     private EnemyFormation enemyFormation;
 
+    private bool hitByPlayer = false;                   // Whether this ship has been hit by a player
+
     // Use this for initialization
     void Start () {
         // Set up refereces
@@ -26,26 +28,27 @@ public class EnemyShip : MonoBehaviour {
 	}
 
     // To be called when hit by an enemy bullet
-    public void Hit()
+    public void HitByPlayer()
     {
 		Instantiate (deathEffect, transform.position, transform.rotation);
+        hitByPlayer = true;
         Destroy(gameObject);
     }
 
 	// To be called when the enemy hits the player
-	void HitPlayer(){
+	void HittingPlayer(){
 		Instantiate (deathEffect, transform.position, transform.rotation);
 		Destroy(gameObject);
 	}
 
 	void OnDestroy(){
-		enemyFormation.EnemyDied (transform.position);
+        enemyFormation.EnemyDied(transform.position, hitByPlayer);
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.transform.tag == "Player") {
 			col.gameObject.GetComponent<PlayerHealth> ().TakeDamage ();
-			HitPlayer ();
+			HittingPlayer ();
 		}
 	}
 }

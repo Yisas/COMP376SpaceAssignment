@@ -12,13 +12,14 @@ public class PlayerController : MonoBehaviour {
 	public Object bullet;
 	public float shotForce;
 	public float minShotInterval;				// Minimum elapsed time between shots
+    public int numberOfShots = 0;               // Amount of shots that the player spawns
 
 	private float horizontalInput = 0;			// Magnitude of horizontal input coming from the input axis
 	private float verticalInput = 0;			// Magnitude of vertical input coming from the input axis
 	private bool shootInput = false;			// Whether the player is shooting this frame
 
-	private GameObject shotSpawn;
-	private float shotTimer;
+    private GameObject shotSpawns;
+    private float shotTimer;
 
 	private Rigidbody2D rb;
 
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		// Set up references
 		rb = GetComponent<Rigidbody2D>();
-		shotSpawn = (GameObject) AuxFunctions.FindChildrenWithTag (transform, "ShotSpawn")[0];
+        shotSpawns = transform.FindChild("Shot Spawns").gameObject;
 
 		// Set up variables
 		shotTimer = minShotInterval;
@@ -56,8 +57,20 @@ public class PlayerController : MonoBehaviour {
 
 	private void Shoot(){
 		if (shootInput) {
-			GameObject tempBullet = (GameObject)Instantiate (bullet, shotSpawn.transform.position, shotSpawn.transform.rotation);
-			tempBullet.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, shotForce);
+
+            // Chose the shot spawn configuration
+            GameObject shotSpawners = shotSpawns.transform.FindChild("Powerup " + numberOfShots).gameObject;
+
+            GameObject tempBullet;
+
+            foreach (Transform shotSpawn in shotSpawners.transform)
+            {
+                tempBullet = (GameObject)Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
+                Vector2 shotVector = new Vector2(0, shotForce);
+                shotVector = AuxFunctions.RotateVector2d(shotVector, shotSpawn.eulerAngles.z);
+                tempBullet.GetComponent<Rigidbody2D>().velocity = shotVector;
+                
+            }
 			shootInput = false;
 			shotTimer = minShotInterval;
 		}
