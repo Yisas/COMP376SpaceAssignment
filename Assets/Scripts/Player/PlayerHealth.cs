@@ -22,6 +22,8 @@ public class PlayerHealth : MonoBehaviour {
 	public void TakeDamage(int damage = 1){
 		powerups -= damage;
 
+        powerups = Mathf.Clamp(powerups, -1, maxNumberOfPickups);
+
         if (powerups < 0)
             Die();
 	}
@@ -30,9 +32,10 @@ public class PlayerHealth : MonoBehaviour {
     {
         powerups += 1;
 
-        Mathf.Clamp(powerups, 0, maxNumberOfPickups);
+        powerups = Mathf.Clamp(powerups, 0, maxNumberOfPickups);
 
         playerController.numberOfShots++;
+        playerController.numberOfShots = Mathf.Clamp(playerController.numberOfShots, 1, maxNumberOfPickups + 1);
     }
 
     void OnTriggerEnter2D(Collider2D col)
