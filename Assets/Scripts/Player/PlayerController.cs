@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
 	public float minShotInterval;				// Minimum elapsed time between shots
     public int numberOfShots = 0;               // Amount of shots that the player spawns
 
+    public AudioClip[] laserShotAudio;
+
 	private float horizontalInput = 0;			// Magnitude of horizontal input coming from the input axis
 	private float verticalInput = 0;			// Magnitude of vertical input coming from the input axis
 	private bool shootInput = false;			// Whether the player is shooting this frame
@@ -22,12 +24,14 @@ public class PlayerController : MonoBehaviour {
     private float shotTimer;
 
 	private Rigidbody2D rb;
+    private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
 		// Set up references
 		rb = GetComponent<Rigidbody2D>();
         shotSpawns = transform.FindChild("Shot Spawns").gameObject;
+        audioSource = GetComponent<AudioSource>();
 
 		// Set up variables
 		shotTimer = minShotInterval;
@@ -73,6 +77,8 @@ public class PlayerController : MonoBehaviour {
             }
 			shootInput = false;
 			shotTimer = minShotInterval;
+
+            audioSource.PlayOneShot(laserShotAudio[Random.Range(0, laserShotAudio.Length)]);
 		}
 	}
 
