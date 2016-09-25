@@ -6,7 +6,8 @@ public class PlayerHealth : MonoBehaviour {
 	public int powerups;
     public int maxNumberOfPickups;
 
-    public AudioClip deathAudio;
+    public AudioClip hitAudio;                  // Audio that plays when the player is hit, not killed
+    public AudioClip deathAudio;                // Audio that plays when the player is killed
 
     private PlayerController playerController;
     private AudioSource audioSource;
@@ -35,7 +36,10 @@ public class PlayerHealth : MonoBehaviour {
         if (powerups < 0)
             Die();
         else
-            StartCoroutine(AuxFunctions.ShakeCamera(0.5f,0.5f));
+        {
+            audioSource.PlayOneShot(hitAudio);
+            StartCoroutine(AuxFunctions.ShakeCamera(0.5f, 0.5f));
+        }
     }
 
     void PickupPowerup()
