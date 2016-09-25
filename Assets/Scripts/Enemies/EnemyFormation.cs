@@ -13,10 +13,10 @@ public class EnemyFormation : MonoBehaviour {
     private bool powerupDropped = false;
 
     // Use this for initialization
-    void Start () {
+    protected void Start () {
         // Setup references
         // Get all enemies in this formation
-        foreach (GameObject enemy in AuxFunctions.FindChildrenWithTag(transform, "Enemy"))
+        foreach (GameObject enemy in AuxFunctions.FindChildrenWithTag(transform.FindChild("Ships").transform, "Enemy"))
             enemies.Add(enemy);
 
         // Setup variables

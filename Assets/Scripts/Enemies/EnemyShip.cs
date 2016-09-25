@@ -23,6 +23,8 @@ public class EnemyShip : MonoBehaviour {
 
         // Set speed at start
         rb.velocity = new Vector2(0, -speed);
+
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"));
 	}
 	
 	// Update is called once per frame
