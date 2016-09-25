@@ -48,7 +48,6 @@ public class EnemyFormation : MonoBehaviour {
 
 	void DropPowerUp(Vector3 enemyPosition)
     {
-        // TODO
         if (!powerupDropped)
         {
             powerupDropped = true;

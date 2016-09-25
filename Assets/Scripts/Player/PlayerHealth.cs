@@ -34,7 +34,9 @@ public class PlayerHealth : MonoBehaviour {
 
         if (powerups < 0)
             Die();
-	}
+        else
+            StartCoroutine(AuxFunctions.ShakeCamera(0.5f,0.5f));
+    }
 
     void PickupPowerup()
     {
