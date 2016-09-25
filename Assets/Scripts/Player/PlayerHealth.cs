@@ -6,11 +6,16 @@ public class PlayerHealth : MonoBehaviour {
 	public int powerups;
     public int maxNumberOfPickups;
 
-    private PlayerController playerController;
+    public AudioClip deathAudio;
 
-	// Use this for initialization
-	void Start () {
+    private PlayerController playerController;
+    private AudioSource audioSource;
+
+    // Use this for initialization
+    void Start () {
+        // Setup references
         playerController = GetComponent<PlayerController>();
+        audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -62,6 +67,7 @@ public class PlayerHealth : MonoBehaviour {
             es.enabled = false;
 
         GetComponent<Animator>().SetTrigger("death");
+        audioSource.PlayOneShot(deathAudio);
         StartCoroutine(AuxFunctions.ShakeCamera(1,3));
     }
 }

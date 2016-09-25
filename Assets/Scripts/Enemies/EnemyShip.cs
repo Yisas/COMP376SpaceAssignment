@@ -6,9 +6,11 @@ public class EnemyShip : MonoBehaviour {
     public float speed;
 
 	public GameObject deathEffect;
+    public AudioClip[] deathAudio;
 
     private Rigidbody2D rb;
     private EnemyFormation enemyFormation;
+    private AudioSource audioSource;
 
     private bool hitByPlayer = false;                   // Whether this ship has been hit by a player
 
@@ -17,6 +19,7 @@ public class EnemyShip : MonoBehaviour {
         // Set up refereces
         rb = GetComponent<Rigidbody2D>();
         enemyFormation = GetComponentInParent<EnemyFormation>();
+        audioSource = GameObject.FindGameObjectWithTag("MainAudioSource").GetComponent<AudioSource>();
 
         // Set speed at start
         rb.velocity = new Vector2(0, -speed);
@@ -32,13 +35,15 @@ public class EnemyShip : MonoBehaviour {
     {
 		Instantiate (deathEffect, transform.position, transform.rotation);
         hitByPlayer = true;
+        PlayerDeathAudioClip();
         Destroy(gameObject);
     }
 
 	// To be called when the enemy hits the player
 	void HittingPlayer(){
 		Instantiate (deathEffect, transform.position, transform.rotation);
-		Destroy(gameObject);
+        PlayerDeathAudioClip();
+        Destroy(gameObject);
 	}
 
 	void OnDestroy(){
@@ -51,4 +56,9 @@ public class EnemyShip : MonoBehaviour {
 			HittingPlayer ();
 		}
 	}
+
+    private void PlayerDeathAudioClip()
+    {
+        audioSource.PlayOneShot(deathAudio[Random.Range(0, deathAudio.Length)]);
+    }
 }
