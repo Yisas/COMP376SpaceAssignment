@@ -20,6 +20,11 @@ public class Bullet : MonoBehaviour {
             col.transform.parent.transform.parent.GetComponent<BossController>().BodyHit(transform.FindChild("bulletTop").transform.position);
         }
 
+        if(col.transform.tag == "BossWeakSpot")
+        {
+            col.transform.parent.GetComponent<BossController>().WeakSpotHit();
+        }
+
         Destroy(gameObject);
     }
 }
