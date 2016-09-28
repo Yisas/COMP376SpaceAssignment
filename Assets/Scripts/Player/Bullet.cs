@@ -12,7 +12,14 @@ public class Bullet : MonoBehaviour {
 
         if(col.transform.tag == "BossArm")
         {
-            col.gameObject.GetComponent<Animator>().SetTrigger("Hit");
+            col.transform.parent.transform.parent.GetComponent<BossController>().ArmHit(col.gameObject, transform.FindChild("bulletTop").transform.position);
         }
+
+        if (col.transform.tag == "BossInvulnerable")
+        {
+            col.transform.parent.transform.parent.GetComponent<BossController>().BodyHit(transform.FindChild("bulletTop").transform.position);
+        }
+
+        Destroy(gameObject);
     }
 }
