@@ -10,6 +10,7 @@ public class BossController : MonoBehaviour {
 
     private Animator animator;
     private Transform beamSpawn;
+    private GameObject beamCharge;
 
     private int armHits = 0;
     private bool coreIsOpen = false;
@@ -18,6 +19,7 @@ public class BossController : MonoBehaviour {
 	void Start () {
         // Set up references
         animator = GetComponent<Animator>();
+        beamCharge = transform.FindChild("Ray Charge").gameObject;
         beamSpawn = transform.FindChild("beamSpawn");
 	}
 	
@@ -52,6 +54,11 @@ public class BossController : MonoBehaviour {
 
             coreIsOpen = true;
         }
+    }
+
+    public void ChargeShotFromCore()
+    {
+        beamCharge.GetComponent<Animator>().SetTrigger("charge");
     }
 
     public void ShootFromCore()
