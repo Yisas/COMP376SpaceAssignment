@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
 
-    void Die()
+    public void Die()
     {
         Rigidbody2D[] rbs = GameObject.FindObjectsOfType<Rigidbody2D>();
         EnemySpawner[] espwnrs = GameObject.FindObjectsOfType<EnemySpawner>();

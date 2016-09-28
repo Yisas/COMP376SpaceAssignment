@@ -47,13 +47,16 @@ public class BossController : MonoBehaviour {
 
     void OpenCore()
     {
-        //TODO
-        if (!coreIsOpen)
-        {
             animator.SetTrigger("open");
 
             coreIsOpen = true;
-        }
+    }
+
+    void CloseCore()
+    {
+        animator.SetTrigger("close");
+
+       coreIsOpen = false;
     }
 
     public void ChargeShotFromCore()
@@ -65,6 +68,7 @@ public class BossController : MonoBehaviour {
     {
         // TODO
         Instantiate(beam, beamSpawn.position, beamSpawn.rotation);
+        CloseCore();
     }
 
     // Invulnerable part of the boss is hit (so basically just instantiate explosion)
