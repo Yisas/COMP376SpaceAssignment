@@ -1,0 +1,255 @@
+fileFormatVersion: 2
+guid: e615f6f474eb76f449b8296dbce16be8
+timeCreated: 1475079489
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: beams_back_1
+    21300002: beams_ray_1
+    21300004: beams_back_2
+    21300006: beams_ray_2
+    21300008: beams_back_3
+    21300010: beams_ray_3
+    21300012: beams_back_4
+    21300014: beams_ray_4
+    21300016: beams_back_5
+    21300018: beams_ray_5
+    21300020: beams_ray_6
+    21300022: beams_back_6
+    21300024: beams_back_7
+    21300026: beams_ray_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: beams_back_1
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 512
+        width: 109
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_ray_1
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 537
+        width: 190
+        height: 70
+      alignment: 9
+      pivot: {x: 0.0077775656, y: 0.51060355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_back_2
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 501
+        width: 98
+        height: 146
+      alignment: 9
+      pivot: {x: 0.21976642, y: 0.5050835}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_ray_2
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 540
+        width: 203
+        height: 71
+      alignment: 9
+      pivot: {x: 0.013704647, y: 0.4895458}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_back_3
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 500
+        width: 57
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_ray_3
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 540
+        width: 197
+        height: 72
+      alignment: 9
+      pivot: {x: -0.0011066882, y: 0.510309}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_back_4
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 334
+        width: 59
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_ray_4
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 365
+        width: 193
+        height: 70
+      alignment: 9
+      pivot: {x: 0.030811923, y: 0.49999955}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_back_5
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 321
+        width: 57
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_ray_5
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 370
+        width: 213
+        height: 68
+      alignment: 9
+      pivot: {x: 0.019112028, y: 0.47816873}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_ray_6
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 368
+        width: 232
+        height: 68
+      alignment: 9
+      pivot: {x: 0.07129222, y: 0.510915}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_back_6
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 340
+        width: 32
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_back_7
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 159
+        width: 44
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: beams_ray_7
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 171
+        width: 233
+        height: 91
+      alignment: 9
+      pivot: {x: 0.034905266, y: 0.5081564}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
