@@ -9,5 +9,10 @@ public class Bullet : MonoBehaviour {
         {
             col.gameObject.GetComponentInParent<EnemyShip>().HitByPlayer();
         }
+
+        if(col.transform.tag == "BossArm")
+        {
+            col.gameObject.GetComponent<Animator>().SetTrigger("Hit");
+        }
     }
 }
