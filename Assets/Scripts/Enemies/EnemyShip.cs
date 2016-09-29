@@ -8,14 +8,14 @@ public class EnemyShip : MonoBehaviour {
 	public GameObject deathEffect;
     public AudioClip[] deathAudio;
 
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
     private EnemyFormation enemyFormation;
     private AudioSource audioSource;
 
     private bool hitByPlayer = false;                   // Whether this ship has been hit by a player
 
     // Use this for initialization
-    void Start () {
+    protected void Start () {
         // Set up refereces
         rb = GetComponent<Rigidbody2D>();
         enemyFormation = GetComponentInParent<EnemyFormation>();
@@ -28,7 +28,7 @@ public class EnemyShip : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
 	    
 	}
 

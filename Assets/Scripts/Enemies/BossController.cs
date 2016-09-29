@@ -3,8 +3,9 @@ using System.Collections;
 
 public class BossController : MonoBehaviour {
 
-    public int armHitsToOpenCore;
+    public float speed;
 
+    public int armHitsToOpenCore;
     public int weakSpotHitsBeforeDeath;
     public GameObject hitEffect;
     public GameObject beam;
@@ -12,7 +13,10 @@ public class BossController : MonoBehaviour {
     private Animator animator;
     private Transform beamSpawn;
     private GameObject beamCharge;
+    private GameObject player;
+    private Rigidbody2D rb;
 
+    private int directionSign = 0;                      // Direction sign of relative position to the player. Positive 1 is to the right
     private int armHits = 0;
     private bool coreIsOpen = false;
     private bool weakspotHit = false;                   // Flag for when the weakspot is hit before the boss shoots from the core
@@ -23,12 +27,33 @@ public class BossController : MonoBehaviour {
         animator = GetComponent<Animator>();
         beamCharge = transform.FindChild("Ray Charge").gameObject;
         beamSpawn = transform.FindChild("beamSpawn");
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+
+        directionSign = FindPlayer();
+
+        // Set the enemy's velocity to moveSpeed in the x direction.
+        rb.velocity = new Vector2(speed * directionSign, rb.velocity.y);
+    }
+
+    // Uses horizontal position diference to return the sign of the offset to the player.
+    protected int FindPlayer()
+    {
+        int direction = 0;
+
+        Vector3 tempFloat = transform.position - player.transform.position;
+
+        if (tempFloat.x <= 0)
+            direction = 1;
+        else
+            direction = -1;
+
+        return direction;
+    }
 
     // One of the arms is hit by a bullet
     public void ArmHit(GameObject armHit, Vector3 position)
