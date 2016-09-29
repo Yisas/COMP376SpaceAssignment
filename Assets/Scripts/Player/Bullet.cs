@@ -8,23 +8,26 @@ public class Bullet : MonoBehaviour {
         if(col.transform.tag == "Enemy")
         {
             col.gameObject.GetComponentInParent<EnemyShip>().HitByPlayer();
+            Destroy(gameObject);
         }
 
         if(col.transform.tag == "BossArm")
         {
             col.transform.parent.transform.parent.GetComponent<BossController>().ArmHit(col.gameObject, transform.FindChild("bulletTop").transform.position);
+            Destroy(gameObject);
         }
 
         if (col.transform.tag == "BossInvulnerable")
         {
             col.transform.parent.transform.parent.GetComponent<BossController>().BodyHit(transform.FindChild("bulletTop").transform.position);
+            Destroy(gameObject);
         }
 
         if(col.transform.tag == "BossWeakSpot")
         {
             col.transform.parent.GetComponent<BossController>().WeakSpotHit();
+            Destroy(gameObject);
         }
 
-        Destroy(gameObject);
     }
 }
