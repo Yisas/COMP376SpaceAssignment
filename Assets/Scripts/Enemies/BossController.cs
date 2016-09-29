@@ -64,7 +64,7 @@ public class BossController : MonoBehaviour {
             //... else count to see if we should open core and expose weak spot
             armHits++;
 
-            armHit.GetComponent<Animator>().SetTrigger("Hit");
+            animator.SetTrigger("armHit");
 
             if (armHits >= armHitsToOpenCore)
             {

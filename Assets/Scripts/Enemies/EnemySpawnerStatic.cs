@@ -14,7 +14,7 @@ public class EnemySpawnerStatic : MonoBehaviour
     private GameController gameController;
 
 	private float spawnTimer;
-	private int nextEnemyIndex;
+	protected int nextEnemyIndex;
 
 	void Awake ()
 	{
@@ -37,8 +37,7 @@ public class EnemySpawnerStatic : MonoBehaviour
 				// Chose enemy type to spawn
 				nextEnemyIndex = Random.Range (0, enemies.Length);
 
-				// Final instantiation
-				GameObject enemy = (GameObject)Instantiate (enemies [nextEnemyIndex], transform.position, transform.rotation);
+                Spawn();
 
 				gameController.numberOfEnemyFormations++;
 
@@ -48,4 +47,10 @@ public class EnemySpawnerStatic : MonoBehaviour
 			spawnTimer -= Time.deltaTime;
 		}
 	}
+
+    public virtual void Spawn()
+    {
+        // Final instantiation
+        GameObject enemy = (GameObject)Instantiate(enemies[nextEnemyIndex], transform.position, transform.rotation);
+    }
 }

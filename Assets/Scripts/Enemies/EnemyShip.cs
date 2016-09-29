@@ -49,6 +49,7 @@ public class EnemyShip : MonoBehaviour {
 	}
 
 	void OnDestroy(){
+        if(enemyFormation)
         enemyFormation.EnemyDied(transform.position, hitByPlayer);
 	}
 

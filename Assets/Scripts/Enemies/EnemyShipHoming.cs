@@ -4,6 +4,8 @@ using System.Collections;
 public class EnemyShipHoming : EnemyShip {
 
     public float horizontalSpeed;
+    public float turnSpeed;
+
     public float initialExitForce;
     public int initialForceDirection;
     public float initialForceInterval;                   // Time interval before starting to apply velocity towards the player. For cosmetic effect
@@ -22,7 +24,7 @@ public class EnemyShipHoming : EnemyShip {
 
         // Set up variables
         initialForceTimer = initialForceInterval;
-
+        
         rb.AddForce(new Vector2(initialExitForce * initialForceDirection, 0));
     }
 
@@ -40,6 +42,7 @@ public class EnemyShipHoming : EnemyShip {
 
             // Set the enemy's velocity to moveSpeed in the x direction.
             rb.velocity = new Vector2(speed * directionSign, GetComponent<Rigidbody2D>().velocity.y);
+            LookAtPlayer();
         }
     }
 
@@ -56,5 +59,14 @@ public class EnemyShipHoming : EnemyShip {
             direction = -1;
 
         return direction;
+    }
+
+    void LookAtPlayer()
+    {
+        Vector3 vectorToTarget = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * turnSpeed);
+        
     }
 }
