@@ -26,8 +26,14 @@ public class GameController : MonoBehaviour {
         bossAppearanceTimer = bossAppearanceInterval;
 
         // Turn on bullet hell mode objects
-        foreach (GameObject go in bulletHellActiveObjects)
-            go.SetActive(true);
+        if (gameMode == GameMode.BulletHell)
+        {
+            // Bullets hit the player in bullet hell mode
+            Bullet.hitsPlayer = true;
+
+            foreach (GameObject go in bulletHellActiveObjects)
+                go.SetActive(true);
+        }
     }
 
     void Update()

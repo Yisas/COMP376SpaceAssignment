@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour {
 
+    [HideInInspector]
+    public static bool hitsPlayer = false;                  // Set to true during bullethell mode, allowing the bullet to hit its own player.
+
 	void OnTriggerEnter2D(Collider2D col)
     {
         if(col.transform.tag == "Enemy")
@@ -29,5 +32,10 @@ public class Bullet : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        if(col.transform.tag == "Player" && hitsPlayer)
+        {
+            col.transform.GetComponent<PlayerHealth>().TakeDamage();
+            Destroy(gameObject);
+        }
     }
 }
