@@ -3,20 +3,31 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
+    public enum GameMode { Normal = 0, BulletHell = 1 };
+
     public int maxNumberOfEnemyFormations;
     public int numberOfEnemyFormations;
 
     public float bossAppearanceInterval;
+    public GameObject[] bulletHellActiveObjects;
     public GameObject[] objectsToDeactivate;
     public GameObject[] objectsToActivate;
+
+    private static GameMode gameMode = GameMode.Normal;
 
     private float bossAppearanceTimer;
     private bool bossAppeared = false;
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
+
         // Setup variables
         bossAppearanceTimer = bossAppearanceInterval;
+
+        // Turn on bullet hell mode objects
+        foreach (GameObject go in bulletHellActiveObjects)
+            go.SetActive(true);
     }
 
     void Update()
@@ -38,4 +49,8 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    public void SetGameMode(int mode)
+    {
+        gameMode = (GameMode) mode;
+    }
 }
