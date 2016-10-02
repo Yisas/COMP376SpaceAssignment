@@ -14,6 +14,8 @@ public class BossController : MonoBehaviour {
 
     public AudioClip deathAudio;
 
+    public SpriteRenderer healthBar; 
+
     private Animator animator;
     private AudioSource audioSource;
     private Transform beamSpawn;
@@ -25,9 +27,10 @@ public class BossController : MonoBehaviour {
     private int armHits = 0;
     private bool coreIsOpen = false;
     private bool weakspotHit = false;                   // Flag for when the weakspot is hit before the boss shoots from the core
+    private int initWeakSpotHitsBeforeDeath;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         // Set up references
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -35,6 +38,9 @@ public class BossController : MonoBehaviour {
         beamSpawn = transform.FindChild("beamSpawn");
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+
+        // Setup variables
+        initWeakSpotHitsBeforeDeath = weakSpotHitsBeforeDeath;
 	}
 	
 	// Update is called once per frame
@@ -127,6 +133,10 @@ public class BossController : MonoBehaviour {
     public void WeakSpotHit()
     {
         weakSpotHitsBeforeDeath--;
+
+        float newScaleMultiplier = (float)weakSpotHitsBeforeDeath / (float)initWeakSpotHitsBeforeDeath;
+        Debug.Log(newScaleMultiplier);
+        healthBar.transform.localScale = new Vector3(healthBar.transform.localScale.x * newScaleMultiplier, healthBar.transform.localScale.y);
 
         if (weakSpotHitsBeforeDeath <= 0)
             Die();
