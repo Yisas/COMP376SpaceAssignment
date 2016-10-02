@@ -7,8 +7,10 @@ public class BossController : MonoBehaviour {
 
     public int armHitsToOpenCore;
     public int weakSpotHitsBeforeDeath;
+
     public GameObject hitEffect;
     public GameObject beam;
+    public GameObject deathEffect;
 
     private Animator animator;
     private Transform beamSpawn;
@@ -140,6 +142,7 @@ public class BossController : MonoBehaviour {
 
     void Die()
     {
-
+        Instantiate(deathEffect, transform);
+        StartCoroutine(AuxFunctions.ShakeCamera(1, 3));
     }
 }
