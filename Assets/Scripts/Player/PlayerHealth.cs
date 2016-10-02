@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : MonoBehaviour
+{
 
-	public int powerups;
+    public int powerups;
     public int maxNumberOfPickups;
 
     public AudioClip hitAudio;                  // Audio that plays when the player is hit, not killed
@@ -13,20 +15,23 @@ public class PlayerHealth : MonoBehaviour {
     private AudioSource audioSource;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         // Setup references
         playerController = GetComponent<PlayerController>();
         audioSource = GetComponent<AudioSource>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 
-	// Damage is an optional parameter, averageDamageAmount = 10 by default
-	public void TakeDamage(int damage = 1){
-		powerups -= damage;
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    // Damage is an optional parameter, averageDamageAmount = 10 by default
+    public void TakeDamage(int damage = 1)
+    {
+        powerups -= damage;
 
         powerups = Mathf.Clamp(powerups, -1, maxNumberOfPickups);
 
@@ -63,17 +68,34 @@ public class PlayerHealth : MonoBehaviour {
 
     public void Die()
     {
+        GetComponent<PlayerController>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+
         Rigidbody2D[] rbs = GameObject.FindObjectsOfType<Rigidbody2D>();
         EnemySpawner[] espwnrs = GameObject.FindObjectsOfType<EnemySpawner>();
-
+        /*
         foreach (Rigidbody2D rb in rbs)
+        {
+            // Bullets run their course, everything else stops
+            if(rb.transform.tag!="Bullet")
             rb.velocity = new Vector2(0, 0);
+
+        }
+        */
 
         foreach (EnemySpawner es in espwnrs)
             es.enabled = false;
 
         GetComponent<Animator>().SetTrigger("death");
+        audioSource.volume = 1.0f;
         audioSource.PlayOneShot(deathAudio);
-        StartCoroutine(AuxFunctions.ShakeCamera(1,3));
+        StartCoroutine(AuxFunctions.ShakeCamera(1, 3));
+        StartCoroutine(WaitAndReload(4));
+    }
+
+    IEnumerator WaitAndReload(float delayInterval)
+    {
+        yield return new WaitForSeconds(delayInterval);
+        SceneManager.LoadScene("MainMenu");
     }
 }
