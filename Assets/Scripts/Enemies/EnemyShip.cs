@@ -8,6 +8,7 @@ public class EnemyShip : MonoBehaviour {
 	public GameObject deathEffect;
     public AudioClip[] deathAudio;
 
+    private GameController gameController;
     protected Rigidbody2D rb;
     private EnemyFormation enemyFormation;
     private AudioSource audioSource;
@@ -17,6 +18,7 @@ public class EnemyShip : MonoBehaviour {
     // Use this for initialization
     protected void Start () {
         // Set up refereces
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         rb = GetComponent<Rigidbody2D>();
         enemyFormation = GetComponentInParent<EnemyFormation>();
         audioSource = GameObject.FindGameObjectWithTag("MainAudioSource").GetComponent<AudioSource>();
@@ -38,6 +40,7 @@ public class EnemyShip : MonoBehaviour {
 		Instantiate (deathEffect, transform.position, transform.rotation);
         hitByPlayer = true;
         PlayerDeathAudioClip();
+        gameController.IncreaseScore(1);
         Destroy(gameObject);
     }
 
@@ -50,7 +53,9 @@ public class EnemyShip : MonoBehaviour {
 
 	void OnDestroy(){
         if(enemyFormation)
-        enemyFormation.EnemyDied(transform.position, hitByPlayer);
+            enemyFormation.EnemyDied(transform.position, hitByPlayer);
+
+        
 	}
 
 	void OnTriggerEnter2D(Collider2D col){

@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameController : MonoBehaviour {
 
     public enum GameMode { Normal = 0, BulletHell = 1 };
+
+    public Text scoreTextObject; 
 
     public int maxNumberOfEnemyFormations;
     public int numberOfEnemyFormations;
@@ -15,6 +18,7 @@ public class GameController : MonoBehaviour {
 
     private static GameMode gameMode = GameMode.Normal;
 
+    private int score = 0;
     private float bossAppearanceTimer;
     private bool bossAppeared = false;
 
@@ -53,6 +57,14 @@ public class GameController : MonoBehaviour {
                 bossAppeared = true;
             }
         }
+    }
+
+    public void IncreaseScore(int add)
+    {
+        score += add;
+
+        // Set the displayed text to be the word "Score" followed by the score value.
+        scoreTextObject.text = "Score: " + score;
     }
 
     public void SetGameMode(int mode)

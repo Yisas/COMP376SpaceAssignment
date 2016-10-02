@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
+// Editor specific code here
 using UnityEditor;
+#endif
 
 public class PrefabSpawner : MonoBehaviour {
 
@@ -57,6 +60,7 @@ public class PrefabSpawner : MonoBehaviour {
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(PrefabSpawner))]
 public class PrefabSpawnerEditor : Editor
 {
@@ -73,3 +77,4 @@ public class PrefabSpawnerEditor : Editor
 
     }
 }
+#endif
