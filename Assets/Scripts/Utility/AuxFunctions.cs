@@ -70,4 +70,11 @@ public class AuxFunctions : MonoBehaviour {
 
         Camera.main.transform.position = originalCamPos;
     }
+
+    public static void DestroyGameObjectsWithTag(string tag)
+    {
+        GameObject[] gos = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject go in gos)
+            Destroy(go);
+    }
 }

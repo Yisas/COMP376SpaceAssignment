@@ -6,6 +6,12 @@ public class EnemySpawnerHoming : EnemySpawnerStatic
 {
 	public int spawnDirection;
 	
+    new void Awake()
+    {
+        notAFormation = true;
+        base.Awake();
+    }
+
     public override void Spawn()
     {
         // Final instantiation

@@ -12,7 +12,10 @@ public class BossController : MonoBehaviour {
     public GameObject beam;
     public GameObject deathEffect;
 
+    public AudioClip deathAudio;
+
     private Animator animator;
+    private AudioSource audioSource;
     private Transform beamSpawn;
     private GameObject beamCharge;
     private GameObject player;
@@ -27,6 +30,7 @@ public class BossController : MonoBehaviour {
 	void Start () {
         // Set up references
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         beamCharge = transform.FindChild("Ray Charge").gameObject;
         beamSpawn = transform.FindChild("beamSpawn");
         rb = GetComponent<Rigidbody2D>();
@@ -142,7 +146,31 @@ public class BossController : MonoBehaviour {
 
     void Die()
     {
-        Instantiate(deathEffect, transform);
+        // Stop moving
+        rb.velocity = new Vector2(0, 0);
+
+        // Turn off enemies, harmful objects and enemy spawners
+        EnemySpawnerHoming[] spawners = transform.GetComponentsInChildren<EnemySpawnerHoming>();
+        foreach (EnemySpawnerHoming esp in spawners)
+            esp.enabled = false;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject go in enemies)
+            go.GetComponent<EnemyShip>().HitByPlayer();
+
+        AuxFunctions.DestroyGameObjectsWithTag("BossBeam");
+        AuxFunctions.DestroyGameObjectsWithTag("BossWeakSpot");
+
+        // Animate death
+        animator.SetTrigger("close");
+        audioSource.PlayOneShot(deathAudio);
+        Instantiate(deathEffect, transform.position, new Quaternion());
         StartCoroutine(AuxFunctions.ShakeCamera(1, 3));
+
+        // You win animation
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<Animator>().SetTrigger("win");
+
+        // Stop this script
+        this.enabled = false;
     }
 }

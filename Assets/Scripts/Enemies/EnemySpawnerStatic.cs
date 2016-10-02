@@ -15,8 +15,9 @@ public class EnemySpawnerStatic : MonoBehaviour
 
 	private float spawnTimer;
 	protected int nextEnemyIndex;
+    protected bool notAFormation = false;
 
-	void Awake ()
+	protected void Awake ()
 	{
         // Setup references
         gameController = GameObject.FindObjectOfType<GameController>();
@@ -39,7 +40,8 @@ public class EnemySpawnerStatic : MonoBehaviour
 
                 Spawn();
 
-				gameController.numberOfEnemyFormations++;
+                if(!notAFormation)
+				    gameController.numberOfEnemyFormations++;
 
 				// Reset timer and flags
 				spawnTimer = spawnTime;
