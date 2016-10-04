@@ -96,6 +96,7 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator WaitAndReload(float delayInterval)
     {
         yield return new WaitForSeconds(delayInterval);
+		Cursor.visible = true;
         SceneManager.LoadScene("MainMenu");
     }
 }

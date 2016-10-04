@@ -92,7 +92,8 @@ public class BossController : MonoBehaviour {
     void OpenCore()
     {
             animator.SetTrigger("open");
-
+			
+			Debug.Log ("Core open: " + Time.time);
             coreIsOpen = true;
     }
 
@@ -105,17 +106,24 @@ public class BossController : MonoBehaviour {
 
         // Reset flags
         weakspotHit = false;
+
+		Debug.Log ("Core closed: " + Time.time);
        coreIsOpen = false;
     }
 
     public void ChargeShotFromCore()
     {
-            beamCharge.GetComponent<Animator>().SetTrigger("charge");
-            beamCharge.GetComponent<CircleCollider2D>().enabled = true;
+		if (!weakspotHit) 
+		{
+			Debug.Log ("Charging shot: " + Time.time);
+			beamCharge.GetComponent<Animator> ().SetTrigger ("charge");
+			beamCharge.GetComponent<CircleCollider2D> ().enabled = true;
+		}
     }
 
     public void ShootFromCore()
     {
+		Debug.Log ("Shooting: " + Time.time);
         if (!weakspotHit)
             // Shoot ...
             Instantiate(beam, beamSpawn.position, beamSpawn.rotation);
@@ -135,7 +143,7 @@ public class BossController : MonoBehaviour {
         weakSpotHitsBeforeDeath--;
 
         float newScaleMultiplier = (float)weakSpotHitsBeforeDeath / (float)initWeakSpotHitsBeforeDeath;
-        Debug.Log(newScaleMultiplier);
+        
         healthBar.transform.localScale = new Vector3(healthBar.transform.localScale.x * newScaleMultiplier, healthBar.transform.localScale.y);
 
         if (weakSpotHitsBeforeDeath <= 0)
@@ -147,6 +155,7 @@ public class BossController : MonoBehaviour {
             // Stop charging animation
             beamCharge.GetComponent<Animator>().SetTrigger("interruptCharge");
 
+			Debug.Log ("Weakspot hit: " + Time.time);
             // Set flag so the boss won't shoot
             weakspotHit = true;
 
@@ -166,7 +175,7 @@ public class BossController : MonoBehaviour {
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject go in enemies)
-            go.GetComponent<EnemyShip>().HitByPlayer();
+            go.GetComponent<EnemyShipHoming>().HitByPlayer();
 
         AuxFunctions.DestroyGameObjectsWithTag("BossBeam");
         AuxFunctions.DestroyGameObjectsWithTag("BossWeakSpot");

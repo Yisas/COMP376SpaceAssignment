@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour {
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         // Setup variables
         bossAppearanceTimer = bossAppearanceInterval;

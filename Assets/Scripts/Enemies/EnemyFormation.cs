@@ -57,6 +57,9 @@ public class EnemyFormation : MonoBehaviour {
 
     void OnDestroy()
     {
-        GameObject.FindObjectOfType<GameController>().numberOfEnemyFormations--;
+		if (GameObject.FindObjectOfType<GameController> ())
+			GameObject.FindObjectOfType<GameController> ().numberOfEnemyFormations--;
+		else
+			Debug.Log ("Enemy formation can't find game controller");
     }
 }
