@@ -26,6 +26,8 @@ public class BulletHellRespawner : MonoBehaviour {
                 Vector3 pos = new Vector3(col.transform.position.x + horizontalOffset, bottom.position.y, col.transform.position.z);
                 col.transform.position = pos;
             }
+
+			col.GetComponent<Bullet> ().Respawned ();
         }
     }
 }

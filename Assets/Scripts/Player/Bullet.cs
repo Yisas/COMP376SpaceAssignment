@@ -5,6 +5,9 @@ public class Bullet : MonoBehaviour {
 
     [HideInInspector]
     public static bool hitsPlayer = false;                  // Set to true during bullethell mode, allowing the bullet to hit its own player.
+	public int respawnsUntilDestroy;
+
+	private int timesRespawned = 0;
 
 	void OnTriggerEnter2D(Collider2D col)
     {
@@ -38,4 +41,13 @@ public class Bullet : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+	// To be called be respawner when it happens
+	public void Respawned()
+	{
+		timesRespawned++;
+
+		if (timesRespawned > respawnsUntilDestroy)
+			Destroy (gameObject);
+	}
 }
