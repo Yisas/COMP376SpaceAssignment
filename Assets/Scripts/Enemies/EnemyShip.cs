@@ -29,9 +29,14 @@ public class EnemyShip : MonoBehaviour {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"));
 	}
 	
-	// Update is called once per frame
+	// Not being used for now but explicitly declared for child classes in case something gets added here
 	protected void Update () {
 	    
+	}
+
+	// Not being used for now but explicitly declared for child classes in case something gets added here
+	protected void FixedUpdate(){
+
 	}
 
     // To be called when hit by an enemy bullet
