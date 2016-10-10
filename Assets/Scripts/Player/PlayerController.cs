@@ -83,8 +83,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void Move(){
+		ConstrainPosition ();
 		Vector2 moveForce = new Vector2 (horizontalInput, verticalInput) * speed;
-		rb.AddForce (moveForce);
+		rb.velocity = moveForce;
 		ConstrainPosition ();
 	}
 

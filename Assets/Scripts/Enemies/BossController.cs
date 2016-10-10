@@ -13,6 +13,7 @@ public class BossController : MonoBehaviour {
     public GameObject deathEffect;
 
     public AudioClip deathAudio;
+	public AudioClip shotAudio;
 
     public SpriteRenderer healthBar; 
 
@@ -124,9 +125,11 @@ public class BossController : MonoBehaviour {
     public void ShootFromCore()
     {
 		Debug.Log ("Shooting: " + Time.time);
-        if (!weakspotHit)
-            // Shoot ...
-            Instantiate(beam, beamSpawn.position, beamSpawn.rotation);
+		if (!weakspotHit) {
+			// Shoot ...
+			Instantiate (beam, beamSpawn.position, beamSpawn.rotation);
+			audioSource.PlayOneShot (shotAudio);
+		}
 
         CloseCore();
     }
