@@ -74,6 +74,8 @@ public class BossController : MonoBehaviour {
         // While core is open nothing happens when hitting the arms...
         if (!coreIsOpen)
         {
+			Debug.Log ("Arm hit while core is closed: " + Time.time);
+
             //... else count to see if we should open core and expose weak spot
             armHits++;
 
@@ -92,24 +94,26 @@ public class BossController : MonoBehaviour {
 
     void OpenCore()
     {
-            animator.SetTrigger("open");
-			
-			Debug.Log ("Core open: " + Time.time);
-            coreIsOpen = true;
+		coreIsOpen = true;
+		Debug.Log ("Core open: " + Time.time);
+
+        animator.SetTrigger("open");
+		Debug.Log ("Open animation triggered: " + Time.deltaTime);
     }
 
     void CloseCore()
     {
+		coreIsOpen = false;
+		Debug.Log ("Core closed: " + Time.time);
+
         // Disable charge effect collider
         beamCharge.GetComponent<CircleCollider2D>().enabled = false;
 
         animator.SetTrigger("close");
+		Debug.Log ("Close animation triggered: " + Time.deltaTime);
 
         // Reset flags
         weakspotHit = false;
-
-		Debug.Log ("Core closed: " + Time.time);
-       coreIsOpen = false;
     }
 
     public void ChargeShotFromCore()
