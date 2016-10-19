@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -70,5 +71,17 @@ public class GameController : MonoBehaviour {
     public void SetGameMode(int mode)
     {
         gameMode = (GameMode) mode;
+    }
+
+    public void WaitAndReload(float delayInterval)
+    {
+        StartCoroutine(WaitAndReloadCoroutine(delayInterval));
+    }
+
+    private static IEnumerator WaitAndReloadCoroutine(float delayInterval)
+    {
+        yield return new WaitForSeconds(delayInterval);
+        Cursor.visible = true;
+        SceneManager.LoadScene("MainMenu");
     }
 }

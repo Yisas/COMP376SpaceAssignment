@@ -90,13 +90,7 @@ public class PlayerHealth : MonoBehaviour
         audioSource.volume = 1.0f;
         audioSource.PlayOneShot(deathAudio);
         StartCoroutine(AuxFunctions.ShakeCamera(1, 3));
-        StartCoroutine(WaitAndReload(4));
-    }
 
-    IEnumerator WaitAndReload(float delayInterval)
-    {
-        yield return new WaitForSeconds(delayInterval);
-		Cursor.visible = true;
-        SceneManager.LoadScene("MainMenu");
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().WaitAndReload(4);
     }
 }

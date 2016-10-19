@@ -196,6 +196,8 @@ public class BossController : MonoBehaviour {
         // You win animation
         GameObject.FindGameObjectWithTag("GameController").GetComponent<Animator>().SetTrigger("win");
 
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().WaitAndReload(4);
+
         // Stop this script
         this.enabled = false;
     }
